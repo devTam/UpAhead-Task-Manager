@@ -1,0 +1,51 @@
+rules_version='2'
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Tasks collection - users can only access their own tasks
+    match /tasks/{taskId} {
+      // Allow read and write only if the user is authenticated
+      // and the task belongs to them (userId matches the authenticated user)
+      allow read, write: if request.auth != null 
+        && request.auth.uid == resource.data.userId;
+      
+      // Allow create only if the user is authenticated
+      // and the userId in the document matches the authenticated user
+      allow create: if request.auth != null 
+        && request.auth.uid == request.resource.data.userId
+        && request.resource.data.keys().hasAll(['title', 'completed', 'createdAt', 'updatedAt', 'userId'])
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 200
+        && request.resource.data.completed is bool
+        && request.resource.data.createdAt is timestamp
+        && request.resource.data.updatedAt is timestamp
+        && request.resource.data.userId is string
+        && (!('description' in request.resource.data) 
+            || request.resource.data.description == null 
+            || (request.resource.data.description is string 
+                && request.resource.data.description.size() <= 1000));
+      
+      // Allow update only if the user is authenticated
+      // and the task belongs to them
+      allow update: if request.auth != null 
+        && request.auth.uid == resource.data.userId
+        && request.resource.data.userId == resource.data.userId
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 200
+        && request.resource.data.completed is bool
+        && request.resource.data.updatedAt is timestamp
+        && (!('description' in request.resource.data) 
+            || request.resource.data.description == null 
+            || (request.resource.data.description is string 
+                && request.resource.data.description.size() <= 1000));
+    }
+    
+    // Deny all other collections by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
