@@ -20,7 +20,6 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   const [showTooltip, setShowTooltip] = useState(false)
 
   const handleAIClick = async () => {
-    // Hide tooltip when button is clicked (important for mobile)
     setShowTooltip(false)
 
     if (showAIMessage) {
