@@ -229,36 +229,9 @@ The application includes comprehensive error handling and user feedback:
 2. Add to environment variables
 3. Configure usage limits as needed
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
 ## 📄 License
 
 This project is licensed under the MIT License.
-
-## 🆘 Support
-
-For support or questions:
-
-1. Check the documentation
-2. Review Firebase console for configuration issues
-3. Check browser console for client-side errors
-4. Verify environment variables are set correctly
-
-## 🎯 Future Enhancements
-
-- Task categories and tags
-- Due dates and reminders
-- Task sharing and collaboration
-- Advanced filtering and search
-- Data export functionality
-- Mobile app development
-- Offline support with service workers
 
 ---
 

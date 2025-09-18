@@ -1,5 +1,5 @@
 import React from "react"
-import { LogOut, User } from "lucide-react"
+import { LogOut, User, CheckSquare } from "lucide-react"
 import { useAuth } from "../contexts/AuthContext"
 
 export const Header: React.FC = () => {
@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-2 sm:space-x-3">
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">✓</span>
+            <CheckSquare className="w-5 h-5 text-white" />
           </div>
           <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
             Task Manager
