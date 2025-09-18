@@ -1,5 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet-async"
+import { CheckSquare } from "lucide-react"
 import { useAuth } from "../contexts/AuthContext"
 
 export const LoginForm: React.FC = () => {
@@ -14,13 +15,13 @@ export const LoginForm: React.FC = () => {
           content="Sign in to your UpAhead Task Manager account to start organizing your tasks efficiently."
         />
       </Helmet>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4 py-8">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-6 sm:p-8">
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-white font-bold text-2xl">✓</span>
+              <CheckSquare className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
               Welcome to UpAhead Task Manager
             </h1>
           </div>
